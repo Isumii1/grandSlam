@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Grand Slam-győztesek weboldala" />
+    <meta name="author" content="Grand Slam-győztesek" />
+
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
+    <title>Grand Slam-győztesek</title>
+
+    <!-- Ikonkészlet -->
+    <script src="assets/fa-all.js"></script>
+    <!-- Bootrsap CSS -->
+    <link href="assets/bootstrap.css" rel="stylesheet" />
+
+    <link href="stilus.css" rel="stylesheet" />
+ 
+  </head>
+
+  <body id="page-top">
+    <!-- Navigáció -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger sajat" href="#page-top"
+          >Grand Slam-győztesek</a
+        >
+        <button
+          class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-secondary text-white rounded"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link rounded js-scroll-trigger" href="#kereses"
+                >Keresés</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link rounded js-scroll-trigger" href="#gyoztesek"
+                >Grand Slam-győztesek</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link rounded js-scroll-trigger"
+                href="#ujgyoztes"
+              >
+                Új győztes</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link rounded js-scroll-trigger"
+                href="#ujjatekos"
+              >
+                Új játékos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link rounded js-scroll-trigger"
+                href="#ujtorna"
+              >
+                Új torna</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Fejléc -->
+    <header class="masthead bg-secondary text-white text-center">
+      <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img
+          class="masthead-avatar mb-5"
+          src="assets/img/main.png.jpg"
+          alt="Logó"
+        />
+        
+        <h1 class="masthead-heading text-uppercase mb-0">Grand Slam-győztesek</h1>
+       
+      </div>
+    </header>
+    <!--Keresés-->
+    <section
+      class="page-section bg-dark text-white szolgaltatasok"
+      id="kereses"
+    >
+      <div class="container">
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls mb-0 pb-2">
+            <input
+              class="form-control"
+              id="keresendo"
+              type="text"
+              placeholder="Írja be a keresendő adatot"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <button
+            class="btn btn-primary btn-xl"
+            id="keresButton"
+            type="button"
+            onclick="kereses()"
+          >
+            Keresés
+          </button>
+        </div>
+
+ 
+      </div>
+    </section>
+
+    <!-- Grand Slam-győztesek -->
+    <section class="page-section bg-dark text-white mb-0" id="gyoztesek">
+      <div class="container">
+        <h2 class="felirat">Grand Slam-győztesek</h2>
+        <table class="table tablazat" style="margin:10px">
+          <thead>
+            <tr>
+              <th>Év</th>
+              <th>Játékos</th>
+              <th>Nemzetiség</th>
+              <th>Torna</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tablazat">
+          </tbody>
+        </table>
+
+       
+      </div>
+    </section>
+
+    <!-- Új Grand Slam-győztes -->
+   
+    <section class="page-section" id="ujgyoztes">
+      <div class="container">
+
+          <h2 class="page-section-heading text-center text-uppercase text-dark mb-0">Új győztes</h2>
+
+
+          <p class="lead">Válaszd ki a nevet, a tornát és az évszámot!</p>
+
+          <div class="row">
+              <div class="col-lg-8 mx-auto">
+                  <form id="contactForm" name="sentMessage">
+                      <div class="control-group">
+                          <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <select id="jatekosneve"  class="form-select form-select-lg"></select>
+
+                          </div>
+                      </div>
+                      <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                          <select id="tornaneve"  class="form-select form-select-lg"></select>
+
+                        </div>
+                    </div>
+                      <div class="control-group">
+                          <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <select id="evszam"  class="form-select form-select-lg"></select>
+                          </div>
+                      </div>
+                     
+                      <div class="form-group">
+                          <button class="btn btn-primary btn-xl" id="sendMessageButton" type="button" onclick="gyoztesadatrogzites()"
+                              >Győztes rögzítés
+                          </button>
+                          <div id="gyoztessiker"></div><!--és a "siker" azonítójú keretbe írja a Backendről vissszatérési értékként megkapott "A felvitel sikerült." szöveget.-->
+                          
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Új játékos -->
+  <section class="page-section" id="ujjatekos">
+    <div class="container">
+
+        <h2 class="page-section-heading text-center text-uppercase text-dark mb-0">Új játékos</h2>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form id="contactForm" name="sentMessage">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <input class="form-control" id="ujjatekosnev" type="text" placeholder="Játékos neve" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                          <input class="form-control" id="ujjatekosnemzetiseg" type="text" placeholder="Játékos nemzetisége" />
+                      </div>
+                  </div>
+                    <br />
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-xl" id="sendMessageButton" type="button" onclick="ujjatekosrogzites()"
+                            >Új játékos rögzítés
+                        </button>
+                        <div id="ujjatekossiker"></div><!--és a "ujjatekossiker" azonítójú keretbe írja a Backendről vissszatérési értékként megkapott "A felvitel sikerült." szöveget.-->
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- Új torna -->
+  <section class="page-section" id="ujtorna">
+    <div class="container">
+
+        <h2 class="page-section-heading text-center text-uppercase text-dark mb-0">Új torna</h2>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form id="contactForm" name="sentMessage">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                            <input class="form-control" id="ujtornanev" type="text" placeholder="torna neve" />
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-xl" id="sendMessageButton" type="button" onclick="ujtornarogzites()"
+                            >Új torna rögzítés
+                        </button>
+                        <div id="ujtornasiker"></div><!--és a "ujtornasiker" azonítójú keretbe írja a Backendről vissszatérési értékként megkapott "A felvitel sikerült." szöveget.-->
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Footer-->
+    <footer class="footer text-center bg-secondary">
+      <div class="container">
+        <div class="row">
+          <h2>Készítette: Isumi</h2>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap, és függőségei -->
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/bootstrap.bundle.min.js"></script>
+    <script src="assets/jquery.easing.min.js"></script>
+
+    <!-- Téma-specifikus szkriptek -->
+    <script src="assets/scripts.js"></script>
+
+    <script src="alap.js"></script>
+  </body>
+</html>
